@@ -6,10 +6,10 @@ feature "Submit a report", %q{
   So I can notify the city of an issue
 
   Acceptance Criteria
-    [ ] I must enter a category and an address
-    [ ] The Address is geocoded automatically 
+    [x] I must enter a category and an address
+    [x] The Address is geocoded automatically
     [x] If all fields are complete, I am told that my report has been saved
-    [ ] If a field is incomplete, I am given an error message and brought back to the input form.
+    [x] If a field is incomplete, I am given an error message and brought back to the input form.
   } do
 
     scenario 'user submits a report with valid attributes' do
@@ -19,7 +19,10 @@ feature "Submit a report", %q{
       fill_in "Category", with: report.category
       fill_in "Address", with: report.address
       click_on "Submit Report"
+      save_and_open_page
       expect(page).to have_content("Report submitted successfully")
+      expect(page).to have_content("42.3515662")
+      expect(page).to have_content("-71.0613815")
     end
 
     scenario 'user submits a report with invalid attributes' do
