@@ -16,6 +16,7 @@
   <%= image_tag @report.image_url.to_s %>
 </div>
 <div>
-  Submitted at: <%= @report.created_at %> <br>
-  Last Updated: <%= @report.updated_at %>
+  Submitted at: <%= local_time(@report.created_at) %> <br>
+  Last Updated: <%= local_time(@report.updated_at) %>
+  ( <%= local_time_ago(@report.updated_at) %> )
 </div>
