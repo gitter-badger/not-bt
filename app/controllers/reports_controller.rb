@@ -4,6 +4,10 @@ class ReportsController < ApplicationController
     @reports = Report.all.limit(10)
   end
 
+  def show
+    @report = Report.find(params[:id])
+  end
+
   def new
     @report = Report.new
   end
@@ -11,7 +15,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     if @report.save
-      redirect_to reports_path, notice: "Report submitted successfully"
+      redirect_to report_path(@report), notice: "Report submitted successfully"
     else
       render :new
     end

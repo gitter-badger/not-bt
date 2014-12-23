@@ -7,6 +7,7 @@ feature "Submit a report", %q{
 
   Acceptance Criteria
     [ ] I must enter a category and an address
+    [ ] The Address is geocoded automatically 
     [x] If all fields are complete, I am told that my report has been saved
     [ ] If a field is incomplete, I am given an error message and brought back to the input form.
   } do
