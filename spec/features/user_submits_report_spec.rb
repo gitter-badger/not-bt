@@ -19,7 +19,6 @@ feature "Submit a report", %q{
       fill_in "Category", with: report.category
       fill_in "Address", with: report.address
       click_on "Submit Report"
-      save_and_open_page
       expect(page).to have_content("Report submitted successfully")
       expect(page).to have_content("42.3515662")
       expect(page).to have_content("-71.0613815")
