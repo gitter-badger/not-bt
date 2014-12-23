@@ -1,8 +1,21 @@
-<%= @report.address %>
-<%= @report.category %>
-<%= @report.description %>
-<%= @report.created_at %>
-<%= @report.updated_at %>
+<div>
+  <h2><%= @report.category %></h2>
+</div>
+<div>
+  <%= @report.description %>
+</div>
 
-<%= @report.latitude %>
-<%= @report.longitude %>
+<div>
+  Address: <%= @report.address %>
+  <div>
+    Latitude: <%= @report.latitude %>,
+    Longitude <%= @report.longitude %>
+  </div>
+</div>
+<div>
+  <%= image_tag @report.image_url.to_s %>
+</div>
+<div>
+  Submitted at: <%= @report.created_at %> <br>
+  Last Updated: <%= @report.updated_at %>
+</div>

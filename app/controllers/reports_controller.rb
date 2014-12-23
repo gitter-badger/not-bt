@@ -24,6 +24,6 @@ class ReportsController < ApplicationController
 private
 
   def report_params
-    params.require(:report).permit(:address, :category, :description, :latiude, :longitude)
+    params.require(:report).permit(:address, :category, :description, :latiude, :longitude, :image)
   end
 end
