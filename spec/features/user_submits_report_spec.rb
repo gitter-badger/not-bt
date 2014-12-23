@@ -7,7 +7,7 @@ feature "Submit a report", %q{
 
   Acceptance Criteria
     [ ] I must enter a category and an address
-    [ ] If all fields are complete, I am told that my report has been saved
+    [x] If all fields are complete, I am told that my report has been saved
     [ ] If a field is incomplete, I am given an error message and brought back to the input form.
   } do
 
@@ -18,7 +18,7 @@ feature "Submit a report", %q{
       fill_in "Category", with: report.category
       fill_in "Address", with: report.address
       click_on "Submit Report"
-      expect(page).to have_content("created successfully")
+      expect(page).to have_content("Report submitted successfully")
     end
 
 end

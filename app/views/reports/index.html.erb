@@ -1,0 +1,10 @@
+<h2> All reports </h2>
+
+<ul>
+  <% @reports.each do |report| %>
+    <li>
+      <%= report.category %>: <%= report.description %> <br>
+      <%= report.address %>
+    </li>
+  <% end %>
+</ul>

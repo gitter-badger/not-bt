@@ -1,0 +1,23 @@
+<h2>Report an Issue</h2>
+
+<%= form_for @report do |f| %>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :category %>
+    <%= f.text_field :category %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.submit "Submit Report" %>
+  </div>
+
+<% end %>

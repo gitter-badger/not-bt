@@ -12,7 +12,10 @@
   </head>
 
   <body>
-    <div class="small-12 columns"
+    <div class="small-12 columns">
+      <% flash.each do |type, message| %>
+        <%= message %>
+      <% end %>
       <%= yield %>
     </div>
     <%= javascript_include_tag "application" %>
