@@ -11,7 +11,7 @@ feature "Submit a report", %q{
     [ ] If a field is incomplete, I am given an error message and brought back to the input form.
   } do
 
-    scenario 'user submits a report' do
+    scenario 'user submits a report with valid attributes' do
       report = FactoryGirl.build(:report)
 
       visit new_report_path
@@ -19,6 +19,15 @@ feature "Submit a report", %q{
       fill_in "Address", with: report.address
       click_on "Submit Report"
       expect(page).to have_content("Report submitted successfully")
+    end
+
+    scenario 'user submits a report with invalid attributes' do
+      report = FactoryGirl.build(:report)
+
+      visit new_report_path
+      click_on "Submit Report"
+      expect(page).to have_content("Address can't be blank")
+      expect(page).to have_content("Category can't be blank")
     end
 
 end
