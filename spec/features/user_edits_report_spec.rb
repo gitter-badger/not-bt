@@ -37,8 +37,7 @@ feature "User edits report", %q{
     login_as(@malicious_user)
     report = FactoryGirl.create(:report, user: @reporting_user, category: categoty)
 
-    visit report_path(report)
-    click_on 'Edit Report'
+    visit edit_report_path(report)
 
     expect(page).to have_content "You may not edit a report you didn't post"
   end
