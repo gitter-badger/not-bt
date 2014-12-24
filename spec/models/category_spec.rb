@@ -7,8 +7,10 @@ describe Category do
   end
   it 'has many reports' do
     category = Category.create(name: 'Streetlight')
-    issue_one = Report.create(address: '33 Harrison Ave Boston, MA 02111' , description: 'Broken', category: category)
-    issue_two = Report.create(address: '60 Harrison Ave Boston, MA 02111' , description: 'Super broken', category: category)
+    issue_one = Report.create(address: '33 Harrison Ave Boston, MA 02111',
+                              description: 'Broken', category: category)
+    issue_two = Report.create(address: '60 Harrison Ave Boston, MA 02111',
+                              description: 'Super broken', category: category)
 
     expect(category.reports.count).to eql(2)
   end

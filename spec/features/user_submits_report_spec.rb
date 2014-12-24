@@ -11,7 +11,8 @@ feature "Submit a report", %q{
     [x] I may optionally upload a photo
     [x] The Address is geocoded automatically
     [x] If all fields are complete, I am told that my report has been saved
-    [x] If a field is incomplete, I am given an error message and brought back to the input form.
+    [x] If a field is incomplete, I am given an error message and brought back
+        to the input form.
   } do
 
     scenario 'user submits a report with valid attributes' do

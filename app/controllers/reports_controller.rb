@@ -1,5 +1,4 @@
 class ReportsController < ApplicationController
-
   def index
     @reports = Report.all.limit(10)
   end
@@ -21,9 +20,10 @@ class ReportsController < ApplicationController
     end
   end
 
-private
+  private
 
   def report_params
-    params.require(:report).permit(:address, :category_id, :description, :latiude, :longitude, :image)
+    params.require(:report).permit(:address, :category_id, :description,
+                                   :latiude, :longitude, :image)
   end
 end
