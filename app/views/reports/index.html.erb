@@ -3,7 +3,7 @@
 <ul>
   <% @reports.each do |report| %>
     <li>
-      <%= report.category %>: <%= report.description %> <br>
+      <b><%= report.category.name %></b> <br>
       <%= report.address %>
     </li>
   <% end %>

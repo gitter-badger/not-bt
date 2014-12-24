@@ -15,11 +15,14 @@ feature "Submit a report", %q{
   } do
 
     scenario 'user submits a report with valid attributes' do
+      Category.create!(name: "Streetlight")
+      Category.create!(name: "Damaged Sign")
       report = FactoryGirl.build(:report)
 
       visit new_report_path
-      fill_in "Category", with: report.category
+
       fill_in "Address", with: report.address
+      select "Streetlight", from: "Category"
       click_on "Submit Report"
       expect(page).to have_content("Report submitted successfully")
       expect(page).to have_content("42.3515662")
