@@ -29,4 +29,18 @@ feature "User edits report", %q{
     expect(page).to have_content 'Report was successfully updated'
     expect(page).to have_content 'Damaged Sign'
   end
+
+  scenario 'User tries to edit a report he/she did not submit' do
+    categoty = Category.create!(name: 'Streetlight')
+    @reporting_user = FactoryGirl.create(:user)
+    @malicious_user = FactoryGirl.create(:user)
+    login_as(@malicious_user)
+    report = FactoryGirl.create(:report, user: @reporting_user, category: categoty)
+
+    visit report_path(report)
+    click_on 'Edit Report'
+
+    expect(page).to have_content "You may not edit a report you didn't post"
+  end
+
 end

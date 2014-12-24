@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @reports = Report.all.limit(10)
@@ -40,5 +41,12 @@ class ReportsController < ApplicationController
   def report_params
     params.require(:report).permit(:address, :category_id, :description,
                                    :latiude, :longitude, :image)
+  end
+
+  def correct_user
+    @report = Report.find(params[:id])
+    if @report.user != current_user
+      redirect_to root_path, notice: "You may not edit a report you didn't post"
+    end
   end
 end
