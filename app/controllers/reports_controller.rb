@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @reports = Report.all.limit(10)
@@ -21,9 +22,10 @@ class ReportsController < ApplicationController
     end
   end
 
-private
+  private
 
   def report_params
-    params.require(:report).permit(:address, :category_id, :description, :latiude, :longitude, :image)
+    params.require(:report).permit(:address, :category_id, :description,
+                                   :latiude, :longitude, :image)
   end
 end
