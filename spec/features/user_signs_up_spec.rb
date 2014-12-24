@@ -41,6 +41,6 @@ feature "User signs up", %q{
 
       click_on "Sign up"
 
-      expect(page).to have_content "Passwords do not match"
+      expect(page).to have_content "Password confirmation doesn't match"
     end
 end
