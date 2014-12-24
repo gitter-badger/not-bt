@@ -20,3 +20,7 @@
   Last Updated: <%= local_time(@report.updated_at) %>
   ( <%= local_time_ago(@report.updated_at) %> )
 </div>
+
+<div>
+  <%= link_to 'Edit Report', edit_report_path(@report) %>
+</div>

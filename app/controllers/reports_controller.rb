@@ -22,6 +22,19 @@ class ReportsController < ApplicationController
     end
   end
 
+  def edit
+    @report = Report.find(params[:id])
+  end
+
+  def update
+    @report = Report.find(params[:id])
+    if @report.update(report_params)
+      redirect_to @report, notice: 'Report was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def report_params
