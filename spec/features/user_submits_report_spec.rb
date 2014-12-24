@@ -35,6 +35,7 @@ feature 'Submit a report', %q(
       expect(page).to have_content('Report submitted successfully')
       expect(page).to have_content('42.3515662')
       expect(page).to have_content('-71.0613815')
+      expect(page).to have_content @user.username
     end
 
     scenario 'user submits a report with invalid attributes' do
