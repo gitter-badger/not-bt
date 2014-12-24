@@ -10,6 +10,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'foundation-rails'
+gem "geocoder"
+gem 'carrierwave'
+gem 'local_time'
+gem 'shoulda-matchers'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -28,5 +32,6 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'launchy'
+  gem 'valid_attribute'
   gem 'factory_girl_rails'
 end

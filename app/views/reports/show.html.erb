@@ -1,0 +1,22 @@
+<div>
+  <h2><%= @report.category.name %></h2>
+</div>
+<div>
+  <%= @report.description %>
+</div>
+
+<div>
+  Address: <%= @report.address %>
+  <div>
+    Latitude: <%= @report.latitude %>,
+    Longitude <%= @report.longitude %>
+  </div>
+</div>
+<div>
+  <%= image_tag @report.image_url.to_s %>
+</div>
+<div>
+  Submitted at: <%= local_time(@report.created_at) %> <br>
+  Last Updated: <%= local_time(@report.updated_at) %>
+  ( <%= local_time_ago(@report.updated_at) %> )
+</div>
