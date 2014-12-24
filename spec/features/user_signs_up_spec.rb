@@ -10,12 +10,12 @@ feature "User signs up", %q{
     [x] If I fill in my username, email, password, and password
         confirmation correctly, I am greeted with a confirmation message
         that my account has been created.
-    [ ] I may optionally supply my phone number
-    [ ] If the password and password confirmation fields do not match, I am
+    [x] I may optionally supply my phone number
+    [x] If the password and password confirmation fields do not match, I am
         given an error message.
-    [ ] If my email already exists in the database, I am given a message that
+    [x] If my email already exists in the database, I am given a message that
         tells me I have already registered.
-    [ ] If my email is not formatted correctly, I am given an error message.
+    [x] If my email is not formatted correctly, I am given an error message.
   } do
 
     scenario 'user provides valid infomation' do
@@ -43,4 +43,39 @@ feature "User signs up", %q{
 
       expect(page).to have_content "Password confirmation doesn't match"
     end
+
+    scenario 'email is already registered' do
+      existing_user = User.create(
+      username: "lizvdk",
+      email: "liz@example.com",
+      password: "supersecret"
+      )
+      visit root_path
+      click_on "Sign Up"
+      visit root_path
+      click_on "Sign Up"
+      fill_in "Username", with: existing_user.username
+      fill_in "Email", with: existing_user.email
+      fill_in "Password", with: existing_user.password
+      fill_in "Password confirmation", with: existing_user.password
+
+
+      click_on "Sign up"
+
+      expect(page).to have_content "Email has already been taken"
+    end
+
+    scenario 'email is improperly formatted' do
+      visit root_path
+      click_on "Sign Up"
+      fill_in "Username", with: "lizvdk"
+      fill_in "Email", with: "liz"
+      fill_in "Password", with: "supersecret"
+      fill_in "Password confirmation", with: "supersecret"
+
+      click_on "Sign up"
+
+      expect(page).to have_content "Email is invalid"
+    end
+
 end
