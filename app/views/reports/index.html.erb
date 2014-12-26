@@ -4,7 +4,8 @@
   <% @reports.each do |report| %>
     <li>
       <b><%= report.category.name %></b> <br>
-      <%= report.address %>
+      <%= link_to report.address, report_path(report) %> <br>
+      Updated at: <%= local_time(report.updated_at) %>
     </li>
   <% end %>
 </ul>

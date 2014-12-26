@@ -23,12 +23,11 @@ feature 'Submit a report', %q(
     end
 
     scenario 'user submits a report with valid attributes' do
-      Category.create!(name: 'Streetlight')
-      Category.create!(name: 'Damaged Sign')
       report = FactoryGirl.build(:report)
 
       visit new_report_path
-
+      save_and_open_page
+      
       fill_in 'Address', with: report.address
       select 'Streetlight', from: 'Category'
       click_on 'Submit Report'
