@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @reports = Report.all.limit(10)
+    @reports = Report.all.limit(10).order(updated_at: :desc)
   end
 
   def show

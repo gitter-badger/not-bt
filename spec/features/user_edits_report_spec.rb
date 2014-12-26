@@ -12,8 +12,6 @@ feature "User edits report", %q{
 
   scenario 'User edits his/her own report' do
     visit root_path
-    Category.create!(name: 'Streetlight')
-    Category.create!(name: 'Damaged Sign')
     @user = FactoryGirl.create(:user)
     login_as(@user)
     report = FactoryGirl.build(:report)
@@ -31,11 +29,10 @@ feature "User edits report", %q{
   end
 
   scenario 'User tries to edit a report he/she did not submit' do
-    categoty = Category.create!(name: 'Streetlight')
     @reporting_user = FactoryGirl.create(:user)
     @malicious_user = FactoryGirl.create(:user)
     login_as(@malicious_user)
-    report = FactoryGirl.create(:report, user: @reporting_user, category: categoty)
+    report = FactoryGirl.create(:report, user: @reporting_user)
 
     visit edit_report_path(report)
 
